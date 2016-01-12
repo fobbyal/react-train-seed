@@ -6,11 +6,15 @@
 - Template Literals
 - let and const
 - modules
+
+
 ## React
 React is a view layer lib.
 One directional data flow
 Provides a way to easily build reusuable and performant components.
 Performant using virtual dom
+
+
 ## Code examples
 - Simple Compoment
   - React, ReactDOM
@@ -23,4 +27,3 @@ Performant using virtual dom
 - Composible Componnets
   - Nested components
   - props.children
-  - refs
