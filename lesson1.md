@@ -10,9 +10,9 @@
 
 ## React
 React is a view layer lib.
-One directional data flow
-Provides a way to easily build reusuable and performant components.
-Performant using virtual dom
+- One directional data flow
+- Provides a way to easily build reusuable and performant components.
+- Performant using virtual dom
 
 
 ## Code examples
