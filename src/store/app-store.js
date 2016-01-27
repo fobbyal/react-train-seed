@@ -53,7 +53,7 @@ const _cartTotals = ( qty = 0, total = 0 ) => {
 };
 
 
-export default const AppStore = Object.assign(EventEmitter.prototype,{
+const AppStore = Object.assign(EventEmitter.prototype,{
   emitChange(){
     this.emit(STORE_CHANGE);
   },
@@ -61,7 +61,7 @@ export default const AppStore = Object.assign(EventEmitter.prototype,{
     this.on(STORE_CHANGE,callback);
   },
   removeChangeListener(callback){
-    this.removeChangeListener(callback);
+    this.removeListener(STORE_CHANGE,callback);
   },
   getCart(){
     return _cartItems;
@@ -95,5 +95,4 @@ export default const AppStore = Object.assign(EventEmitter.prototype,{
 
 });
 
-
-
+export default AppStore;

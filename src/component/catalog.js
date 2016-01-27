@@ -1,6 +1,6 @@
 import React from 'react';
 import AppStore from '../store/app-store';
-import CatalogItem from './app-catalogitem';
+import CatalogItem from './catalog-item';
 
 class Catalog extends React.Component {
   constructor(){

@@ -1,9 +1,17 @@
 import React from 'react';
-import Actions from '../action/app-actions'
+import Catalog from './catalog';
+import Cart from './cart';
 
-export default class App extends React.Component {
+import Template from './app-template';
+import { Router, Route, IndexRoute } from 'react-router';
 
-  render(){
-    return <h1 onClick={Actions.addItem}> Flux Shopping Example !!!</h1>;
-  }
-}
+export default () => {
+  return (
+    <Router>
+      <Route path="/" component={ Template }>
+        <IndexRoute component={ Catalog } />
+        <Route path="cart" component={ Cart } />
+      </Route>
+    </Router>
+  );
+};
