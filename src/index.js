@@ -1,65 +1,41 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import {Dispatcher} from 'flux';
-import {EventEmitter} from 'events';
+import {createStore} from 'redux';
 
-
+/** constants **/
 const Actions = {
   ADD_TODO: 'ADD_TODO'
 };
 
-const _todos = [];
-
-const AppDispatcher = new Dispatcher();
-
-const TODO_CHANGE = 'TODO_CHANGE';
-
-let TodoStore = Object.assign({},EventEmitter.prototype,{
-  emitChange(){
-    this.emit(TODO_CHANGE);
-  },
-  addChangeListener(cb){
-    this.on(TODO_CHANGE,cb);
-  },
-  removeChangeListener(cb){
-    this.removeListener(TODO_CHANGE,cb);
-  },
-  getTodos(){
-    return _todos;
-  }
-})
-
-
-AppDispatcher.register((action) => {
+let todoReducer = (state = [],action) => {
   switch(action.type) {
     case Actions.ADD_TODO:
       let todoText = action.txt.trim();
-      _todos.push(todoText);
+      return [...state,todoText];
   }
-  TodoStore.emitChange();
-});
+  return state;
+}
 
+const store = createStore(todoReducer);
 
+/** actions **/
 let addTodo = (txt) =>{
-  AppDispatcher.dispatch({type:Actions.ADD_TODO,txt});
+  store.dispatch({type:Actions.ADD_TODO,txt});
 }
 
 
 class Todo extends React.Component {
-
   constructor(){
     super();
-    this.state = {todos: TodoStore.getTodos()};
-    this._onChange = this._onChange.bind(this);
+    this.state = {todos: store.getState()};
   }
+
   componentWillMount(){
-    TodoStore.addChangeListener( this._onChange )
+    this.removeListener=store.subscribe(()=>this.setState({todos: store.getState()}));
   }
-  componentWillUnmount(){
-    TodoStore.removeChangeListener( this._onChange )
-  }
-  _onChange(){
-    this.setState({todos: TodoStore.getTodos()});
+
+  componentWillUnMount(){
+    this.removeListener();
   }
 
   render(){
