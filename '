@@ -104,7 +104,6 @@ Counter = connect(null,(dispatch)=>{
     decrease:decreaseCount.bind(null,dispatch)
   };
 })(Counter);
- 
 
 
 let CounterManager = ({counters,addCounter}) => {
@@ -136,6 +135,7 @@ const App = ()=> {
       <Todo/>
       <CounterManager/>
     </div>
+
   );
 }
 
