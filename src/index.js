@@ -6,7 +6,8 @@ import {createStore,combineReducers} from 'redux';
 const Actions = {
   ADD_TODO: 'Todo/ADD_TODO',
   INCREASE: 'Counter/Increase',
-  DECREASE: 'Counter/Decrease'
+  DECREASE: 'Counter/Decrease',
+  ADD: 'Counter/Add'
 };
 
 let todos = (state = [],action) => {
@@ -18,18 +19,27 @@ let todos = (state = [],action) => {
   return state;
 }
 
-let counter = (state = 0,action) => {
+let counters = (state = [],action) => {
   switch(action.type) {
     case Actions.DECREASE:
-      return state-1;
+      return [...state.slice(0,action.index),
+        state[action.index]-1,
+        ...state.slice(action.index+1)
+      ];
     case Actions.INCREASE:
-      return state+1;
+      return [...state.slice(0,action.index),
+        state[action.index]+1,
+        ...state.slice(action.index+1)
+      ];
+    case Actions.ADD:
+      return [...state,0];
   }
   return state;
 }
 
-const finalReducer = combineReducers({todos,counter});
+const finalReducer = combineReducers({todos,counters});
 const store = createStore(finalReducer);
+
 
 /** actions **/
 let addTodo = (txt) =>{
@@ -52,6 +62,7 @@ class Todo extends React.Component {
   }
 
   render(){
+    console.log(store.getState());
     let todos = this.state.todos.map((t)=>{
       return <li key={t}>{t}</li>
     });
@@ -66,37 +77,63 @@ class Todo extends React.Component {
 }
 
 
-let increaseCount = () => {
-  store.dispatch({type:Actions.INCREASE});
+
+const Counter =({increase,decrease,count}) => {
+    return (
+      <div>
+        <h1>{ count }</h1>
+        <button onClick={increase}>+</button>
+        <button onClick={decrease}>-</button>
+      </div>
+    );
+};
+
+
+let increaseCount = (i) => {
+  console.log('got incrase here with'+i);
+  store.dispatch({type:Actions.INCREASE,index:i});
 }
 
-let decreaseCount = () => {
-  store.dispatch({type:Actions.DECREASE});
+let decreaseCount = (i) => {
+  console.log('got decrase here with'+i);
+  store.dispatch({type:Actions.DECREASE,index:i});
 }
 
-class Counter extends React.Component {
+let addCounter = () => {
+  store.dispatch({type:Actions.ADD});
+}
+
+class CounterManager extends React.Component {
 
   constructor(){
     super();
-    this.state = {count: store.getState().counter};
+    this.state = {counters: store.getState().counters};
   }
 
   componentWillMount(){
-    this.removeListener=store.subscribe(()=>this.setState({count: store.getState().counter}));
+    this.removeListener=store.subscribe(()=>this.setState({counters: store.getState().counters}));
   }
 
   componentWillUnMount(){
     this.removeListener();
   }
-
-  render(){
+  render() {
+    let counters = this.state.counters.map(
+      (c,i) => {
+        return <Counter 
+              key={i}
+              increase = {increaseCount.bind(null,i)}  
+              decrease = {decreaseCount.bind(null,i)}
+              count = {c}
+              />
+      }
+    )
     return (
       <div>
-        <h1>{ this.state.count }</h1>
-        <button onClick={increaseCount}>+</button>
-        <button onClick={decreaseCount}>-</button>
+        <button onClick={addCounter}>Add Counter</button>
+        {counters}
       </div>
-    );
+    )
   }
 
 
@@ -107,7 +144,7 @@ const App = ()=> {
   return (
     <div>
       <Todo/>
-      <Counter/>
+      <CounterManager/>
     </div>
 
   );
