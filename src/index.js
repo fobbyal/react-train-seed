@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import {createStore} from 'redux';
+import {createStore,combineReducers} from 'redux';
 
 /** constants **/
 const Actions = {
-  ADD_TODO: 'ADD_TODO'
+  ADD_TODO: 'Todo/ADD_TODO',
+  INCREASE: 'Counter/Increase',
+  DECREASE: 'Counter/Decrease'
 };
 
-let todoReducer = (state = [],action) => {
+let todos = (state = [],action) => {
   switch(action.type) {
     case Actions.ADD_TODO:
       let todoText = action.txt.trim();
@@ -16,7 +18,18 @@ let todoReducer = (state = [],action) => {
   return state;
 }
 
-const store = createStore(todoReducer);
+let counter = (state = 0,action) => {
+  switch(action.type) {
+    case Actions.DECREASE:
+      return state-1;
+    case Actions.INCREASE:
+      return state+1;
+  }
+  return state;
+}
+
+const finalReducer = combineReducers({todos,counter});
+const store = createStore(finalReducer);
 
 /** actions **/
 let addTodo = (txt) =>{
@@ -27,11 +40,11 @@ let addTodo = (txt) =>{
 class Todo extends React.Component {
   constructor(){
     super();
-    this.state = {todos: store.getState()};
+    this.state = {todos: store.getState().todos};
   }
 
   componentWillMount(){
-    this.removeListener=store.subscribe(()=>this.setState({todos: store.getState()}));
+    this.removeListener=store.subscribe(()=>this.setState({todos: store.getState().todos}));
   }
 
   componentWillUnMount(){
@@ -53,4 +66,52 @@ class Todo extends React.Component {
 }
 
 
-ReactDom.render(<Todo />,document.getElementById('app'));
+let increaseCount = () => {
+  store.dispatch({type:Actions.INCREASE});
+}
+
+let decreaseCount = () => {
+  store.dispatch({type:Actions.DECREASE});
+}
+
+class Counter extends React.Component {
+
+  constructor(){
+    super();
+    this.state = {count: store.getState().counter};
+  }
+
+  componentWillMount(){
+    this.removeListener=store.subscribe(()=>this.setState({count: store.getState().counter}));
+  }
+
+  componentWillUnMount(){
+    this.removeListener();
+  }
+
+  render(){
+    return (
+      <div>
+        <h1>{ this.state.count }</h1>
+        <button onClick={increaseCount}>+</button>
+        <button onClick={decreaseCount}>-</button>
+      </div>
+    );
+  }
+
+
+}
+
+
+const App = ()=> {
+  return (
+    <div>
+      <Todo/>
+      <Counter/>
+    </div>
+
+  );
+}
+
+
+ReactDom.render(<App />,document.getElementById('app'));
