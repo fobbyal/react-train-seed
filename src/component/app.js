@@ -1,13 +1,11 @@
 import React from 'react';
-import Todo from './todo/todo';
-import CounterManager from './counter/counter-manager';
 
-
-export default () => {
+export default ({ children }) => {
   return (
     <div>
-      <Todo/>
-      <CounterManager/>
+      <h1> Welcome to routed app</h1>
+      <div>{children}</div>
+
     </div>
   );
 };
