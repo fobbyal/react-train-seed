@@ -3,7 +3,11 @@
   "plugins": ["react", "mocha"],
   "rules": {
     "comma-dangle": [2, "never"],
-    "react/prop-types":[1,{}]
+    "react/prop-types":[1,{}],
+    "react/jsx-no-bind":[1,{
+      "ignoreRefs": true,
+      "allowArrowFunctions": true
+      }]
   },
   "env": {
     "es6":true

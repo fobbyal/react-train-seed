@@ -5,10 +5,9 @@ import * as CounterAction from '../../action/counter-action';
 
 export const CounterManager = ({ counters, addCounter }) => {
   const countersRender = counters.map(
-      (c, i) => {
-        return (<Counter key={i} count = {c} index={i}/>);
-      }
+      (c, i) => (<Counter key={i} count = {c} index={i}/>)
     );
+
   return (
       <div>
         <button onClick={addCounter}>Add Counter</button>
@@ -18,10 +17,6 @@ export const CounterManager = ({ counters, addCounter }) => {
 };
 
 export default connect(
-  (state) => {return { counters: state.counters };},
-  (dispatch) => {
-    return { addCounter: () => {
-      dispatch(CounterAction.add());
-    }
-  };}
+  (state) => ({ counters: state.counters }),
+  (dispatch) => ({ addCounter: () => dispatch(CounterAction.add()) })
  )(CounterManager);
