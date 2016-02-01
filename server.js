@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack/webpack.config');
 
-var server = 'train.integdev.com'
+var server = '0.0.0.0';
 
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
