@@ -4,12 +4,6 @@ export const Actions = {
   ADD: 'Counter/Add'
 };
 
-export const increase = (index) => {
-  return { type: Actions.INCREASE, index };
-};
-export const decrease = (index) => {
-  return { type: Actions.DECREASE, index };
-};
-export const add = () => {
-  return { type: Actions.ADD };
-};
+export const increase = (index) => ({ type: Actions.INCREASE, index });
+export const decrease = (index) => ({ type: Actions.DECREASE, index });
+export const add = () => ({ type: Actions.ADD });

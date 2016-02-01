@@ -3,11 +3,9 @@ import Todo from './todo/todo';
 import CounterManager from './counter/counter-manager';
 
 
-export default () => {
-  return (
+export default () => (
     <div>
       <Todo/>
       <CounterManager/>
     </div>
-  );
-};
+);
