@@ -1,0 +1,18 @@
+verbose: true
+instrumentation:
+    root: src
+    extensions:
+      - .js
+reporting:
+    print: summary
+    reports:
+        - lcov
+    dir: ./coverage
+    watermarks:
+        statements: [50, 80]
+        lines: [50, 80]
+        functions: [50, 80]
+        branches: [50, 80]
+hooks:
+    hook-run-in-context: false
+    post-require-hook: null
