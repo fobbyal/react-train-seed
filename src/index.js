@@ -6,6 +6,9 @@ import App from './component/app';
 import Todo from './component/todo/todo';
 import CounterManager from './component/counter/counter-manager';
 import { browserHistory, Router, Route, IndexRoute } from 'react-router';
+import { setConfig } from './util/ajax' ;
+
+setConfig({ baseURL: 'http://train.integdev.com:9000' });
 
 
 ReactDom.render(

@@ -5,21 +5,19 @@ import TestUtils from 'react-addons-test-utils';
 import chaiJSX from 'chai-equal-jsx';
 chai.use(chaiJSX);
 
-const Comp = ({active, txt}) => {
-
-  if(active){
-    return <div className="act-class">{txt}</div> 
-  }  
+const Comp = ({ active, txt }) => {
+  if (active) {
+    return <div className="act-class">{txt}</div>;
+  }
   return <div >{txt}</div>;
 };
 
 describe('Testing jsx', () => {
   it('should be equals component', () => {
-
     const renderer = TestUtils.createRenderer();
-    renderer.render(<Comp active={true} txt={'alex'} />);
+    renderer.render(<Comp active txt={'alex'} />);
 
-    let output = renderer.getRenderOutput();
+    const output = renderer.getRenderOutput();
     expect(output.props.className).to.equal('act-class');
     expect(output.props.children).to.equal('alex');
   });

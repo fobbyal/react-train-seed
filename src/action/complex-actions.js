@@ -1,13 +1,7 @@
 import * as CounterActions from './counter-action';
 import * as TodoActions from './todo-action';
 import { push } from 'react-router-redux';
-import axios from 'axios';
-
-axios.defaults.baseURL = 'http://train.integdev.com:9000';
-
-export const getIntegApi = () => {
-  return axios.get('/api');
-};
+import { getAllApps } from '../server-api/integ-apps';
 
 export const doCrazy = () => {
   return (dispatch) => {
@@ -20,11 +14,14 @@ export const doCrazy = () => {
 };
 
 export const evenCrazier = () => {
-  return (dispatch) => {
-    dispatch(getIntegApi)
+  return (dispatch, getState) => {
+    dispatch(getAllApps)
     .then((res) => {
       console.log(res);
       dispatch(doCrazy());
+      const l = getState().counters.length;
+      dispatch(TodoActions.add(`clear up ${l} counters`));
+      dispatch(push('/'));
     });
   };
 };
