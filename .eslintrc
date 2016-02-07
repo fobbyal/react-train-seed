@@ -2,6 +2,7 @@
   "extends": "airbnb",
   "plugins": ["react", "mocha"],
   "rules": {
+    "indent": [2, 2],
     "comma-dangle": [2, "never"],
     "react/prop-types":[1,{}],
     "react/jsx-no-bind":[1,{
