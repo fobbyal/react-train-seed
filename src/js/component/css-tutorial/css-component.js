@@ -9,8 +9,7 @@ import { Link } from 'react-router';
 //     </ul>
 //     <div>
 //       {children}
-//     </div>
-//   </div>
+//     </div> //   </div>
 // );
 export default ({ children }) => (
     <div>
@@ -18,7 +17,9 @@ export default ({ children }) => (
       <li><Link to={"/css/display"}> Display </Link></li>
       <li><Link to={"/css/box-model"}> Box Model</Link></li>
       <li><Link to={"/css/position"}> Position</Link></li>
+      <li><Link to={"/css/float"}> Float</Link></li>
     </ul>
+    <h1 style={{marginLeft:'180px'}}> CSS Tutorial </h1>
     <div className="content">
       {children}
     </div>

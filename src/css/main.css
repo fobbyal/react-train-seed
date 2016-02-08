@@ -6,6 +6,9 @@
 body {
   background:  #eee;
 }
+strong {
+  font-size: 150%;
+}
 .inline-text {
   color: blue;
   border: 1px solid;
@@ -73,6 +76,7 @@ body {
   right: 0px;
   height: 60px;
   border: 1px solid;
+  background-color: rgba(131, 65, 127, 0.62);
 
 }
 .content {
@@ -90,7 +94,7 @@ body {
 .relative-parent {
   position: relative;
   width: 600px;
-  height: 330px;
+  height: 280px;
   border: 1px solid;
   margin: 16 auto;
 }
@@ -104,4 +108,33 @@ body {
   border: 1px solid;
   background-color: rgba(131, 65, 127, 0.62);
   border-color: red;
+}
+.float {
+  float: right;
+  width: 500px;
+  height: 35px;
+  margin: 0 0 .5em .5em;
+  background-color: rgba(131, 65, 127, 0.62);
+}
+.float-big {
+  float: right;
+  width: 200px;
+  height: 600px;
+  margin: 0 0 .5em .5em;
+  background-color: rgba(131, 65, 127, 0.62);
+}
+.float-left {
+  float: left;
+  width: 500px;
+  height: 35px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  background-color: rgba(131, 65, 127, 0.62);
+}
+.clear-left {
+  clear: left;
+}
+.clear-fix {
+  overflow: auto;
+  height: auto;
 }
