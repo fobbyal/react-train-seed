@@ -19,6 +19,7 @@ export default ({ children }) => (
       <li><Link to={"/css/position"}> Position</Link></li>
       <li><Link to={"/css/float"}> Float</Link></li>
       <li><Link to={"/css/layout"}> Simple Layout </Link></li>
+      <li><Link to={"/css/mq"}> Media Query </Link></li>
     </ul>
     <h1 style={ { marginLeft: '180px' } }> CSS Tutorial </h1>
     <div className="content">

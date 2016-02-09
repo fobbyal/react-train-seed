@@ -176,3 +176,36 @@ strong {
   margin-left: 140px;
   margin-right: 140px;
 }
+/** media query **/
+@media screen and (min-width:600px) {
+  .mq-left {
+    position: absolute;
+    width: 140px;
+    left: 0px;
+    top: 0px;
+    height:100%;
+  }
+  .mq-right {
+    position: absolute;
+    width: 140px;
+    right: 0px;
+    top: 0px;
+    height:100%;
+  }
+  .mq-middle{
+    margin-left: 140px;
+    margin-right: 140px;
+  }
+}
+@media screen and (max-width:599px) {
+  .mq-left {
+    position: relative;
+  }
+  .mq-right {
+    position: relative;
+  }
+  .mq-middle{
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}

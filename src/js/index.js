@@ -8,6 +8,7 @@ import CSSCompnent from './component/css-tutorial/css-component';
 import CounterManager from './component/counter/counter-manager';
 import Floats from './component/css-tutorial/float';
 import Layout from './component/css-tutorial/simple-layout';
+import MediaQuery from './component/css-tutorial/media-queries';
 import { browserHistory, Router, Route, IndexRoute } from 'react-router';
 import { setConfig } from './util/ajax';
 import '../css/main.css';
@@ -38,6 +39,7 @@ ReactDom.render(
           <Route path="position" component={Positions}/>
           <Route path="float" component={Floats}/>
           <Route path="layout" component={Layout}/>
+          <Route path="mq" component={MediaQuery}/>
         </Route>
         <Route path="counters" component={CounterManager}/>
         <Route path="todos" component={Todo}/>
