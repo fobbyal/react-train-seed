@@ -7,6 +7,7 @@ import Todo from './component/todo/todo';
 import CSSCompnent from './component/css-tutorial/css-component';
 import CounterManager from './component/counter/counter-manager';
 import Floats from './component/css-tutorial/float';
+import Layout from './component/css-tutorial/simple-layout';
 import { browserHistory, Router, Route, IndexRoute } from 'react-router';
 import { setConfig } from './util/ajax';
 import '../css/main.css';
@@ -36,6 +37,7 @@ ReactDom.render(
           <Route path="box-model" component={BoxModel}/>
           <Route path="position" component={Positions}/>
           <Route path="float" component={Floats}/>
+          <Route path="layout" component={Layout}/>
         </Route>
         <Route path="counters" component={CounterManager}/>
         <Route path="todos" component={Todo}/>

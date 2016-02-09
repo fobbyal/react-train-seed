@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import * as CounterActions from './counter-action';
 import * as TodoActions from './todo-action';
 import { push } from 'react-router-redux';

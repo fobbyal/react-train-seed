@@ -138,3 +138,41 @@ strong {
   overflow: auto;
   height: auto;
 }
+/*** Simple Layout Using Position **/
+.ps-container{
+  position: relative;
+}
+.header {
+  background: tomato;
+}
+.footer {
+  background: lightgreen;
+}
+.main {
+  text-align: left;
+  background: deepskyblue;
+}
+.left-side {
+  background: gold;
+}
+.right-side {
+  background: hotpink;
+}
+.ps-left{
+  position: absolute;
+  width: 140px;
+  left: 0px;
+  top: 0px;
+  height:100%;
+}
+.ps-right{
+  position: absolute;
+  width: 140px;
+  right: 0px;
+  top: 0px;
+  height:100%;
+}
+.ps-middle{
+  margin-left: 140px;
+  margin-right: 140px;
+}
