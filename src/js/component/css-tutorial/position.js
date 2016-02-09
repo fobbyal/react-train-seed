@@ -16,8 +16,8 @@ export default () => (
       fixed box is relative to the view port of the page
     </div>
     <div className="relative-parent">
-      Relative parent
-    <div className="ab-block">Absolute bock is fixed to a positioned parent</div>
+        Relative parent
+      <div className="ab-block">Absolute bock is fixed to a positioned parent</div>
     </div>
   </div>
 
