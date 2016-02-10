@@ -3,13 +3,12 @@
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
-body {
-  background:  #eee;
+/*body {
+  background:  #8e1e1e;
 }
 strong {
   font-size: 150%;
-}
-
+}*/
 
 .inline-text {
   color: blue;
@@ -20,7 +19,7 @@ strong {
 }
 .menu {
   list-style-type: none;
-  padding-left: 0px; 
+  padding-left: 0px;
 }
 .menu li {
   color: blue;

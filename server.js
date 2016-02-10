@@ -3,7 +3,10 @@ var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack/webpack.config');
 
-var server = '0.0.0.0';
+var server = process.argv[2]?process.argv[2]:'localhost';
+var port = process.argv[3]?process.argv[3]:3000;
+
+config.entry=['webpack-dev-server/client?http://'+server+':3000','./src/js/index.js'];
 
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
@@ -14,10 +17,10 @@ new WebpackDevServer(webpack(config), {
   stats: {
     colors: true
   }
-}).listen(3000, server, function (err, result) {
+}).listen(port, server, function (err, result) {
   if (err) {
     console.log(err);
   }
 
-  console.log('Listening at '+server+':3000');
+  console.log('Listening at ',server,':',port);
 });

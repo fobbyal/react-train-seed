@@ -9,20 +9,30 @@ import { Link } from 'react-router';
 
 
 export default ({ children }) => (
-    <div>
-      <h1>Welcome to App with Router</h1>
-      <ul>
-      <li><Link to={'/'}>Css tutorial</Link></li>
-      <li><Link to={'/counters'}>Counters</Link></li>
-      <li><Link to={'/todos'}>Todos</Link></li>
-      </ul>
-      <div>{children}</div>
-    </div>
+  <div>
+  {/**
+     <nav className="navbar navbar-default">
+        <Link className="navbar-brand" to={'/'}>Integ SPA tutorial</Link>
+        <ul className="nav navbar-nav">
+          <li><Link to={'/'}>Bootstrap tutorial</Link></li>
+          <li><Link to={'/css/display'}>Css tutorial</Link></li>
+          <li><Link to={'/counters'}>Counters</Link></li>
+          <li><Link to={'/todos'}>Todos</Link></li>
+        </ul>
+      </nav>
+      <div className="container">
+        {children}
+      </div>
+  **/}
+        <h1>Integ SPA tutorial</h1>
+        <ul>
+          <li><Link to={'/'}>Bootstrap tutorial</Link></li>
+          <li><Link to={'/css/display'}>Css tutorial</Link></li>
+          <li><Link to={'/counters'}>Counters</Link></li>
+          <li><Link to={'/todos'}>Todos</Link></li>
+        </ul>
+      <div className="container">
+        {children}
+      </div>
+  </div>
 );
-// export default connect(
-//   null,
-//   (dispatch) => ({
-//     goToCounters: () => dispatch(doCrazy()),
-//     fetchInteg: () => dispatch(evenCrazier())
-//   })
-// )(App);
